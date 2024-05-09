@@ -5,9 +5,18 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Mi Aplicación
     link(rel="stylesheet", href="/styles/index.css")
+    header 
+     h1 Receta Electronica
+
   body
-    h1 ¡Hola desde Pug!
-    button#hola click aqui 
 
+      div#form
+       label ID de REFEPS.
+       input(type="text", required, placeholder="Ej:1Z39JI901")
+       br
+       label DNI
+       input(type="number",required, placeholder="Ej:12345678")   
 
-    script(src="/scripts/index.js") 
+  script(src="/scripts/index.js") 
+  footer 
+   h4 Copyright 2024. Todos los derechos reservados

@@ -1,3 +1,13 @@
 html{
-    background-color: brown;
+    background-color: #2b2628;
+}
+header{
+    background-color: #eb0258;
+}
+footer{
+    background-color: #eb0258;
+}
+
+#form{
+    background-color: #dbf73b;
 }
