@@ -1,0 +1,57 @@
+html{
+    background-color: #eb0258;
+}
+header{
+    background-color: #eb0258;
+}
+footer{
+    background-color: #eb0258;
+}
+
+
+div.contenido{
+    background-color: #2b2628;
+}
+
+.contenedor {
+    display: flex;
+}
+  
+.menu {
+    flex: 0 0 20%; /* Esta columna ocupará el 20% del ancho total */
+    background-color: #dbf73b; /* Color de fondo del menú */
+    border-radius: 4px;
+}
+  
+.contenido {
+    flex: 1; /* Esta columna ocupará el espacio restante */
+    padding: 20px; /* Añade espaciado para que el contenido no esté pegado a los bordes */
+}
+
+#diagnostico {
+    width: 100%;
+    background-color: gray;
+}
+
+#pacientes {
+    width: 100%;
+    background-color: gray;
+}
+
+#medicamentos {
+    width: 100%;
+    background-color: gray;
+}
+
+#prestaciones {
+    width: 100%;
+    background-color: gray;
+}
+
+#vigencia {
+    background-color: gray;
+}
+
+textarea::placeholder {
+    color: black ; /* Cambia esto al color que desees */
+}
