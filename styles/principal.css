@@ -1,16 +1,16 @@
 html{
-    background-color: #eb0258;
+    background-color: #003366;
 }
 header{
-    background-color: #eb0258;
+    background-color: #10eccb;
 }
 footer{
-    background-color: #eb0258;
+    background-color: #10eccb;
 }
 
 
 div.contenido{
-    background-color: #2b2628;
+    background-color: #98FF98;
 }
 
 .contenedor {
@@ -19,7 +19,7 @@ div.contenido{
   
 .menu {
     flex: 0 0 20%; /* Esta columna ocupará el 20% del ancho total */
-    background-color: #dbf73b; /* Color de fondo del menú */
+    background-color: #10eccb; /* Color de fondo del menú */
     border-radius: 4px;
 }
   
@@ -30,28 +30,36 @@ div.contenido{
 
 #diagnostico {
     width: 100%;
-    background-color: gray;
+    background-color: #5bd84f;
 }
 
 #pacientes {
     width: 100%;
-    background-color: gray;
+    background-color: #5bd84f;
 }
 
 #medicamentos {
     width: 100%;
-    background-color: gray;
+    background-color: #5bd84f;
 }
 
 #prestaciones {
     width: 100%;
-    background-color: gray;
+    background-color: #5bd84f;
 }
 
 #vigencia {
-    background-color: gray;
+    background-color: #5bd84f;
 }
 
 textarea::placeholder {
     color: black ; /* Cambia esto al color que desees */
+}
+
+button{
+    background-color: #5bd84f;
+    border-radius: 5px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 }
