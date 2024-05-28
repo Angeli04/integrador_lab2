@@ -1,0 +1,70 @@
+doctype html
+
+html(lang="en")
+
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Registrarse
+    //link(rel="stylesheet", href="/styles/index.css")
+    header 
+     h1 Registrarse 
+
+  body
+   form#formulario(action="/register", method="post")
+    label(for="username") Nombre de usuario 
+    input(type="text", id="username", name="username", required)
+    br
+    label(for="email") Correo electrónico 
+    input(type="email", id="email", name="email", required)
+    br
+    label(for="password") Contraseña 
+    input(type="password", id="password", name="password", required)
+    br
+    label(for="confirm_password") Confirmar contraseña 
+    input(type="password", id="confirm_password", name="confirm_password", required)
+    br
+    label(for="documento") Documento 
+    input(type="text", id="documento", name="documento", required)
+    br
+    label(for="nombre") Nombre 
+    input(type="text", id="nombre", name="nombre", required)
+    br
+    label(for="apellido") Apellido 
+    input(type="text", id="apellido", name="apellido", required)
+    br
+    label(for="fecha_nacimiento") Fecha de Nacimiento 
+    input(type="date", id="fecha_nacimiento", name="fecha_nacimiento", required)
+    br
+    label(for="sexo") Sexo 
+    select(id="sexo", name="sexo")
+        option(value="M") Masculino
+        option(value="F") Femenino
+        option(value="O") Otro
+    br
+    label(for="domicilio") Domicilio 
+    input(type="text", id="domicilio", name="domicilio", required)
+    br
+    label Rol del usuario
+    input(type="radio", id="admin", name="role_id", value="1")
+    label(for="admin") Administrador
+    input(type="radio", id="medico", name="role_id", value="2")
+    label(for="medico") Médico
+    input(type="radio", id="paciente", name="role_id", value="3")
+    label(for="paciente") Paciente
+    br
+    div#oculto
+     label(for="profesion") Seleccione una profesion 
+     select(name="profesion",required)
+           option(value="") Profesiones 
+           each profesion in profesiones
+            option(value=profesion.ID,required) #{profesion.nombre}
+     br
+     label(for="matricula") N° de matricula 
+     input(type="text", name="matricula", placeholder="Matricula",required) 
+    input(type="submit", value="Registrar")
+
+
+  script(src="/scripts/registro.js") 
+  footer 
+   h4 Copyright 2024. Todos los derechos reservados
