@@ -55,16 +55,16 @@ html(lang="en")
     br
     div#oculto
      label(for="profesion") Seleccione una profesion 
-     select(name="profesion",required)
+     select#profesion(name="profesion",required)
            option(value="") Profesiones 
            each profesion in profesiones
-            option(value=profesion.ID,required) #{profesion.nombre}
+            option(value=(profesion.ID),required) #{profesion.nombre}
      br
-     label(for="matricula") N° de matricula 
+     label#matricula(for="matricula") N° de matricula 
      input(type="text", name="matricula", placeholder="Matricula",required) 
     input(type="submit", value="Registrar")
 
 
-  script(src="/scripts/registro.js") 
+  script(src="/scripts/register.js") 
   footer 
    h4 Copyright 2024. Todos los derechos reservados

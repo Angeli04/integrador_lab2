@@ -1,6 +1,10 @@
 const formulario = document.getElementById('formulario')
+const selectProfesion = document.getElementById('profesion')
+const labelMatricula = document.getElementById('matricula')
 const extra_medico = document.createElement("h3")
 extra_medico.textContent = 'hola'
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Función para verificar si el radio button "medico" está seleccionado
@@ -19,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ejecutar la función cuando se carga la página
     verificarRol();
-
     // Ejecutar la función cada vez que el estado del radio button cambie
     document.querySelectorAll('input[type=radio]').forEach((radio) => {
         radio.addEventListener('change', verificarRol);

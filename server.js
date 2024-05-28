@@ -38,7 +38,7 @@ app.get('/principal', (req, res) => {
 
 app.get('/register', (req, res) => {
   let profesiones
-  conexion.query('SELECT `profesion` FROM profesion;', (err, resultados) => {
+  conexion.query('SELECT * FROM profesion;', (err, resultados) => {
     profesiones = resultados
     res.render('register', { profesiones: resultados })
   })
