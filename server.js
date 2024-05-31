@@ -37,17 +37,46 @@ app.get('/principal', (req, res) => {
 })
 
 app.get('/register', (req, res) => {
-  let profesiones
-  conexion.query('SELECT * FROM profesion;', (err, resultados) => {
-    profesiones = resultados
-    res.render('register', { profesiones: resultados })
+//  let profesiones
+// let obrasSociales
+
+
+  promiseProfesion = new Promise((resolve,reject)=>{
+    conexion.query('SELECT * FROM profesion;', (err, resultados) => {
+      if (err){
+        reject(err);
+      }else{
+        resolve(resultados)
+      }
+    })
   })
+
+  promiseObras = new Promise((resolve,reject)=>{
+    conexion.query('SELECT ID, nombre FROM obra_social', (err, resultados) => {
+      if(err){
+        reject(err)
+      }else{
+        resolve(resultados)
+      }
+    })
+  })
+ 
+Promise.all([promiseProfesion,promiseObras])
+  .then(([profesiones,obrasSociales])=>{
+    res.render('register',{profesiones,obrasSociales});
+  })
+  .catch((err)=>{
+    console.log('error en consulta a base de datos:',err)
+    res.status(500).json({error: 'Error en la consulta a base de datos' })
+  })
+    
+
 
 })
 
 app.post('/register', async (req, res) => {
   const {
-    username, email, password, confirm_password, documento, nombre, apellido, fecha_nacimiento, sexo, domicilio, role_id,profesion,matricula
+    username, email, password, confirm_password, documento, nombre, apellido, fecha_nacimiento, sexo, domicilio, role_id, profesion, matricula, obraSocial, plan
   } = req.body
 
   if (password !== confirm_password) {
@@ -55,9 +84,7 @@ app.post('/register', async (req, res) => {
   }
 
   try {
-
     const hashedPassword = await bcrypt.hash(password, 10)
-
     conexion.beginTransaction(err => {
 
       if (err) { throw err; }
@@ -72,7 +99,7 @@ app.post('/register', async (req, res) => {
         }
       })
 
-      const insertUser = 'INSERT INTO users (username, password, email, `role-id`, `persona-documento`) VALUES (?,?,?,?,?)'
+      const insertUser = 'INSERT INTO users (username, password, email, `role-id`, `persona-documento`) VALUES (?,?,?,?,?)';
       conexion.query(insertUser, [username, hashedPassword, email, role_id, documento], (err, result) => {
         if (err) {
           return conexion.rollback(() => {
@@ -82,9 +109,21 @@ app.post('/register', async (req, res) => {
       })
 
       if (role_id == 2) {
-        const insertProfesional = 'INSERT INTO `profesional`(`PersonaDocumento`, `Profesion`, `Matricula`) VALUES (?,?,?)'
+        const insertProfesional = 'INSERT INTO `profesional`(`PersonaDocumento`, `Profesion`, `Matricula`) VALUES (?,?,?)';
 
-        conexion.query(insertProfesional,[documento,profesion,matricula],(err,result)=>{
+        conexion.query(insertProfesional, [documento, profesion, matricula], (err, result) => {
+          if (err) {
+            return conexion.rollback(() => {
+              throw err
+            })
+          }
+        })
+      }
+
+      if(role_id == 3) {
+        const insertPaciente = 'INSERT INTO `paciente` (`PersonaDocumento`, `plan`) VALUES (?,?)';
+
+        conexion.query(insertPaciente,[documento,plan],(err,result)=>{
           if(err){
             return conexion.rollback(()=>{
               throw err
@@ -128,9 +167,18 @@ app.post('/submit-form', (req, res) => {
   res.send(responseHTML);
 })
 
+app.post('/planes', bodyParser.json(), (req, res) => {
+  let val = req.body.valor;
+  console.log(typeof(val)); // Debería mostrar "string"
+  console.log(val); // Para verificar el valor
 
-
-
+  conexion.query('SELECT * FROM `plan` WHERE id_obra_social = ?;',[val],(err,result)=>{
+    if(err){
+      throw err
+    }
+    res.json({ tabla:result });
+  })
+});
 
 // Iniciar el servidor
 app.listen(port, () => {
