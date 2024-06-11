@@ -10,13 +10,14 @@ html(lang="en")
 
   body
 
-      div#form
-       label email
-       input(type="email", required, placeholder="EJ.juan123@gmail.com")
+      form(action='/login',method="POST")
+       label(for="email") email
+       input(type="email", required, placeholder="EJ.juan123@gmail.com",name="email")
        br
-       label contraseña.
-       input(type="text",required)   
-      button#login Iniciar cesion
+       label(for="password") contraseña.
+       input(type="password",required, name="password")
+       br
+       input(type="submit", value="iniciar sesion")
       br
       button#register Registrarse
   script(src="/scripts/index.js") 

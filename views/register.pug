@@ -6,7 +6,7 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Registrarse
-    //link(rel="stylesheet", href="/styles/index.css")
+    link(rel="stylesheet", href="/styles/register.css")
     header 
      h1 Registrarse 
 
@@ -34,7 +34,7 @@ html(lang="en")
     input(type="text", id="apellido", name="apellido", required)
     br
     label(for="fecha_nacimiento") Fecha de Nacimiento 
-    input(type="date", id="fecha_nacimiento", name="fecha_nacimiento", required)
+    input(type="date", id="fecha_nacimiento", name="fecha_nacimiento", required,max=`${new Date().toISOString().split('T')[0]}`)
     br
     label(for="sexo") Sexo 
     select(id="sexo", name="sexo")
@@ -42,11 +42,9 @@ html(lang="en")
         option(value="F") Femenino
         option(value="O") Otro
     br
-
     label(for="domicilio") Domicilio 
     input(type="text", id="domicilio", name="domicilio", required)
     br
-
     label Rol del usuario
     input(type="radio", id="admin", name="role_id", value="1")
     label(for="admin") Administrador
@@ -55,7 +53,6 @@ html(lang="en")
     input(type="radio", id="paciente", name="role_id", value="3")
     label(for="paciente") Paciente
     br
-
     div#ocultoMedico(style="display:none;")
      label(for="profesion") Seleccione una profesion 
      select#profesion(name="profesion")
@@ -66,7 +63,6 @@ html(lang="en")
      label#matricula(for="matricula") N° de matricula 
      input(type="text", name="matricula", placeholder="Matricula",required)
     br
-    
     div#ocultoPaciente
      label(for="obraSocial") Seleccione una obra social 
      select#obraSocial(name="obrasocial")
@@ -76,7 +72,6 @@ html(lang="en")
      label(for="plan") Seleccione un plan 
      select#plan(name="plan") 
       option(value="") planes 
-      
     input(type="submit", value="Registrar")
 
   script(src="/scripts/register.js") 

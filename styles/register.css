@@ -1,0 +1,63 @@
+/* Estilos generales del formulario */
+form#formulario {
+    width: 400px;
+    margin: auto;
+    background-color: #f4f4f4; /* Color de fondo */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Estilos para las etiquetas */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Color del texto */
+  }
+  
+  /* Estilos para los campos de entrada */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Color del borde */
+    border-radius: 4px;
+    box-sizing: border-box; /* para incluir el padding y el borde en el ancho total */
+  }
+  
+  /* Estilos para los botones de radio */
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  /* Estilos para el botón de envío */
+  input[type="submit"] {
+    width: 100%;
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white;
+    padding: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para los mensajes de error */
+  input:invalid {
+    border-color: red;
+  }
+  
+  /* Estilos específicos para el campo de selección de profesión */
+  div#ocultoMedico,
+  div#ocultoPaciente {
+    margin-top: 10px;
+  }
+  
+  /* Estilos para ocultar el campo de selección de profesión */
+  div#ocultoMedico[style="display:none;"],
+  div#ocultoPaciente[style="display:none;"] {
+    display: none;
+  }
+  

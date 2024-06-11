@@ -28,6 +28,7 @@ div.contenido{
     padding: 20px; /* Añade espaciado para que el contenido no esté pegado a los bordes */
 }
 
+
 #diagnostico {
     width: 100%;
     background-color: #5bd84f;
@@ -36,9 +37,20 @@ div.contenido{
 #pacientes {
     width: 100%;
     background-color: #5bd84f;
+    
 }
 
 #medicamentos {
+    width: 100%;
+    background-color: #5bd84f;
+}
+
+#medicamentos2 {
+    width: 100%;
+    background-color: #5bd84f;
+}
+
+#medicamentos3 {
     width: 100%;
     background-color: #5bd84f;
 }
@@ -52,9 +64,17 @@ div.contenido{
     background-color: #5bd84f;
 }
 
+#lado{
+    width: 100%;
+    background-color: #5bd84f;
+}
+
 textarea::placeholder {
     color: black ; /* Cambia esto al color que desees */
 }
+
+
+
 
 button{
     background-color: #5bd84f;

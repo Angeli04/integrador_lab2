@@ -6,8 +6,7 @@ html(lang="en")
         link(rel="stylesheet", href="/styles/principal.css")
         title Principal
     header 
-     h3 Bienvenido doctor
-
+      h3 Bienvenido #{user.username}
     body
      
     .contenedor
@@ -24,42 +23,65 @@ html(lang="en")
           li menu 8       
       .contenido
         // Coloca aquí el resto del contenido
-        h1 Prescripcion Medica
-        h3 Complete todos los campos a continuacion para generar una prescripcion medica
+        h1 Préscripción Médica
+        h3 Complete todos los campos a continuacion para generar una préscripción Médica
         form(action="http://localhost:3000/submit-form" method="post")
          label(for="pacientes") Seleccione un paciente:
-          select(name="paciente",required)#pacientes
-           option(value="") Seleccione un paciente 
+          input#pacientes(type="text",list="pacienteSug",required)
+          datalist#pacienteSug
            each paciente in pacientes
-            option(value= paciente.nombre) #{paciente.nombre} #{paciente.apellido}
-
+            option(paciente-data-value=(paciente.ID)) #{paciente.Nombre} #{paciente.Apellido} 
+          input#pacienteID(type="hidden", name="PacienteID",required)
          br
          br
          label(for="diagnostico") Diagnostico:
          textarea(type="text",maxlength="500", required, placeholder="Inserte diagnostico",rows="5", name="diagnostico")#diagnostico
          br
          br
-         label(for="medicamentos") Seleccione un Medicamento:
-          select(name="medicamento",required)#medicamentos
-           option(value="Medicamento1") Medicamento 1 categoria y familia
-           option(value="Medicamento2") Medicamento 2 categoria y familia
-           option(value="Medicamento3") Medicamento 3 categoria y familia
-           option(value="Medicamento4") Medicamento 4 categoria y familia
+         div#divmedicamentos
+          label(for="medicamentos") Seleccione un Medicamento:
+           input#medicamentos(type="text",list="medicamentoSug",required)
+           datalist#medicamentoSug
+            each medicamento in medicamentos 
+             option(data-value=(medicamento.ID)) #{medicamento.Nombre}
+           input#medicamentoID(type="text", name="medicamentoID")
+
+         div#divmedicamentos2(style="visibility:hidden;")
+          label(for="medicamentos2") Seleccione un Medicamento:
+           input#medicamentos2(type="text",list="medicamentoSug")
+           datalist#medicamentoSug
+            each medicamento in medicamentos 
+             option(data-value=(medicamento.ID)) #{medicamento.Nombre}
+           input#medicamentoID2(type="text", name="medicamentoID2")
+
+         div#divmedicamentos3(style="visibility:hidden;")
+          label(for="medicamentos2") Seleccione un Medicamento:
+           input#medicamentos3(type="text",list="medicamentoSug")
+           datalist#medicamentoSug
+            each medicamento in medicamentos 
+             option(data-value=(medicamento.ID)) #{medicamento.Nombre}
+           input#medicamentoID3(type="text", name="medicamentoID3")
+
+         button#sumar Sumar 
+         button#restar Restar   
          br
          br
          label(for="prestaciones") Seleccione una Prestacion:
-          select(name="prestacion",required)#prestaciones
-           option(value="Prestaciones1") Prestación 1 
-           option(value="Prestaciones2") Prestación 2 
-           option(value="Prestaciones3") Prestación 3 
-           option(value="Prestaciones4") Prestación 4
+          input#prestaciones(type="text",required,list="prestacionSug")
+          datalist#prestacionSug 
+           each prestacion in prestaciones
+            option(prestacion-data-value=(prestacion.ID)) #{prestacion.Descripcion}
+          input#prestacionID(type="hidden",name="prestacionID",required) 
          br
          br
-         label(for="vigencia") Válido hasta:
-          input(type="date",required,name="vigencia")#vigencia
+         label(for="lado") Seleccione lado 
+          select#lado(name="lado",required)
+            option(value="") Lado    
          br
          br
          button(type="submit") Enviar Prescripcion
+
+        button#logout Cerrar Sesión  
       script(src="/scripts/principal.js") 
     footer 
      h4 Copyright 2024. Todos los derechos reservados  

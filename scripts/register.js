@@ -5,6 +5,7 @@ const divOcultoMedico = document.getElementById('ocultoMedico')
 const divOcultoPaciente = document.getElementById('ocultoPaciente')
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     // Función para verificar si el radio button "medico" está seleccionado
     const verificarRol = () => {
@@ -63,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
         radio.addEventListener('change', verificarRol);
     });
     ///Lo de abajo funciona para traer los planes en base a las obras sociales
-    const selObra = document.getElementById('obraSocial').addEventListener("change",function(){
-        var selectedValue = this.value;
+    const selObra = document.getElementById('obraSocial').addEventListener("input",function(){
+        let selectedValue = this.value;
         console.log(selectedValue)
         fetch('/planes',{
             method: 'POST',
@@ -79,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
             selPlan.innerHTML=""
             console.log('Success:', data)
             const planes = JSON.parse(data).tabla
-
             console.log(planes)
             planes.forEach(element => {
                 let op = document.createElement("option")
