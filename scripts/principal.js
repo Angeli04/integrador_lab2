@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
   let medicamentosInput = document.getElementById('medicamentos');
   let medicamentoIDInput = document.getElementById('medicamentoID');
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let divMedicamentos3 = document.getElementById('divmedicamentos3')
   let contador = 1;
 
-  medicamentosInput.addEventListener('input', function () {
+  medicamentosInput.addEventListener('input', async function () {
     let options = document.querySelectorAll('#medicamentoSug option');
     let inputValue = medicamentosInput.value;
     let medicamentoID = '';
@@ -151,10 +153,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (contador === 3) {
       divMedicamentos3.style.visibility = "hidden"
       medicamentoIDInput3.setAttribute("required", false)
+      medicamentoIDInput3.value=""
       contador--
     } else if (contador === 2) {
       divMedicamentos2.style.visibility = "hidden"
       medicamentoIDInput2.setAttribute("required", false)
+      medicamentoIDInput2.value=""
       contador-- 
     }
   })

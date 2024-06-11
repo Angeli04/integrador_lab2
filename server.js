@@ -258,13 +258,38 @@ app.post('/submit-form',(req, res) => {
     console.log('Datos insertados correctamente:'/*,resultados*/);
     let idultimo = await resultados.insertId
 
-    conexion.query('INSERT INTO `prestacion-prescripcion`(`ID`, `Descripcion`, `Indicacion`, `Justificacion`, `ID-prescripcion`, `ID-prestacion`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')',()=>{
-
+    conexion.query('INSERT INTO `prestacion-prescripcion`(`Descripcion`, `Indicacion`, `Justificacion`, `ID-prescripcion`, `ID-prestacion`,`ID-lado`) VALUES ("descripcion aca","indicacion aca","justificacion aca",?,?,?)',[idultimo,datosRecibidos.prestacionID,datosRecibidos.lado],(err,result)=>{
+      if (error){
+        console.log('Error en prestacion-prescripcion:',err);
+        return
+      }
     })
 
-    conexion.query(()=>{
-
+    
+    conexion.query('INSERT INTO `medicamento-prescripcion`(`ID-Medicamento`, `ID-prescripcion`) VALUES (?,?)',[datosRecibidos.medicamentoID,idultimo],(err,result)=>{
+      if(err){
+        console.log('Error al insertar prescripcion-medicamento:',err)
+        return
+      }
     })
+
+    if(datosRecibidos.medicamentoID2 != ""){
+      conexion.query('INSERT INTO `medicamento-prescripcion`(`ID-Medicamento`, `ID-prescripcion`) VALUES (?,?)',[datosRecibidos.medicamentoID2,idultimo],(err,result)=>{
+        if(err){
+          console.log('Error al insertar prescripcion-medicamento:',err)
+          return
+        }
+      })
+    }
+
+    if(datosRecibidos.medicamentoID3 != ""){
+      conexion.query('INSERT INTO `medicamento-prescripcion`(`ID-Medicamento`, `ID-prescripcion`) VALUES (?,?)',[datosRecibidos.medicamentoID3,idultimo],(err,result)=>{
+        if(err){
+          console.log('Error al insertar prescripcion-medicamento:',err)
+          return
+        }
+      })
+    }
 
   })
 

@@ -44,23 +44,23 @@ html(lang="en")
            datalist#medicamentoSug
             each medicamento in medicamentos 
              option(data-value=(medicamento.ID)) #{medicamento.Nombre}
-           input#medicamentoID(type="text", name="medicamentoID")
-
+           input#medicamentoID(type="hidden", name="medicamentoID")  
+         br 
          div#divmedicamentos2(style="visibility:hidden;")
           label(for="medicamentos2") Seleccione un Medicamento:
            input#medicamentos2(type="text",list="medicamentoSug")
            datalist#medicamentoSug
             each medicamento in medicamentos 
              option(data-value=(medicamento.ID)) #{medicamento.Nombre}
-           input#medicamentoID2(type="text", name="medicamentoID2")
-
+           input#medicamentoID2(type="hidden", name="medicamentoID2")
+         br
          div#divmedicamentos3(style="visibility:hidden;")
           label(for="medicamentos2") Seleccione un Medicamento:
            input#medicamentos3(type="text",list="medicamentoSug")
            datalist#medicamentoSug
             each medicamento in medicamentos 
              option(data-value=(medicamento.ID)) #{medicamento.Nombre}
-           input#medicamentoID3(type="text", name="medicamentoID3")
+           input#medicamentoID3(type="hidden", name="medicamentoID3")
 
          button#sumar Sumar 
          button#restar Restar   
